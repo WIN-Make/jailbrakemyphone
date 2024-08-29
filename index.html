@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jailbreak Terminal</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF00;
+            font-family: "Courier New", Courier, monospace;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .terminal {
+            border: 2px solid #00FF00;
+            padding: 15px;
+            width: 95%;
+            height: 80vh; /* Increased height for a larger terminal */
+            margin: 20px auto;
+            background-color: #000;
+            box-shadow: 0 0 10px #00FF00;
+            text-align: left;
+            overflow-y: auto;
+        }
+        .command {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .blinking-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #00FF00;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+        }
+        #startButton {
+            background-color: #00FF00;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        @keyframes blink {
+            0%, 50% { background-color: #00FF00; }
+            50%, 100% { background-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal" id="terminal">
+        <div class="blinking-cursor" id="cursor"></div>
+    </div>
+    <button id="startButton" onclick="startJailbreak()">Start Jailbreak</button>
+
+    <script>
+        function startJailbreak() {
+            const terminal = document.getElementById("terminal");
+            const cursor = document.getElementById("cursor");
+            const startButton = document.getElementById("startButton");
+
+            // Disable the button after starting
+            startButton.disabled = true;
+            startButton.style.display = 'none';
+
+            // Extended fake jailbreak steps with more details
+            const steps = [
+                "Establishing secure connection to device...",
+                "SSH connection established (IP: 192.168.1.15, Port: 22)...",
+                "Checking device compatibility...",
+                "Fetching device serial number and unique identifiers...",
+                "Verifying cryptographic signatures...",
+                "Decrypting firmware components...",
+                "Loading kernel modules...",
+                "Kernel module: 'exploit_0day.kext' loaded successfully.",
+                "Downloading necessary exploits...",
+                "Exploit downloaded: checkm8 (4.2MB)",
+                "Preparing exploit environment...",
+                "Disabling secure boot and integrity checks...",
+                "Sending payload to device...",
+                "Payload sent successfully.",
+                "Injecting low-level hooks into system libraries...",
+                "Low-level hooks injected.",
+                "Patching bootloader code...",
+                "Bootloader patch successful.",
+                "Initiating kernel exploit...",
+                "Bypassing ASLR and DEP protections...",
+                "Gaining root privileges...",
+                "Root privileges acquired.",
+                "Mounting filesystem with read/write access...",
+                "Filesystem mounted.",
+                "Injecting custom shell into /bin/bash...",
+                "Custom shell injection successful.",
+                "Running privilege escalation script...",
+                "[*] Exploiting CVE-2021-1234...",
+                "[*] Exploitation successful. Gained full root access.",
+                "Downloading additional jailbreak scripts...",
+                "Script 1/3: 'overload_kernel.sh' downloaded.",
+                "Script 2/3: 'bypass_rootguard.sh' downloaded.",
+                "Script 3/3: 'unlock_privileges.sh' downloaded.",
+                "Executing 'overload_kernel.sh'...",
+                "[+] Injecting malicious code into kernel memory space...",
+                "[+] Manipulating syscall table to disable system watchdog...",
+                "[+] Redirecting I/O streams to hide activity logs...",
+                "[+] Scrambling device unique ID (UDID)...",
+                "Executing 'bypass_rootguard.sh'...",
+                "[+] Deactivating rootguard protections...",
+                "[+] Patching system binaries to allow root access...",
+                "[+] Writing custom init.shroot scripts for persistent control...",
+                "[+] Hijacking security tokens for elevated permissions...",
+                "Executing 'unlock_privileges.sh'...",
+                "[+] Enumerating and killing security daemons...",
+                "[+] Installing modified su binary with elevated privileges...",
+                "[+] Disabling firmware updates and OTA checks...",
+                "[+] Remounting system partitions...",
+                "[+] Injecting backdoor listeners...",
+                "[+] Gaining complete shell access...",
+                "[+] Jailbreak complete! All system restrictions removed.",
+                "Cleaning up temporary files...",
+                "[+] Temporary files deleted.",
+                "[*] Process complete. Exiting..."
+            ];
+
+            // Display steps one by one with a shorter delay for faster display
+            let stepIndex = 0;
+            function displayNextStep() {
+                if (stepIndex < steps.length) {
+                    const step = steps[stepIndex];
+                    const commandElement = document.createElement("div");
+                    commandElement.className = "command";
+                    commandElement.textContent = step;
+                    terminal.insertBefore(commandElement, cursor);
+
+                    stepIndex++;
+                    setTimeout(displayNextStep, 100); // Faster delay time for quicker steps
+                } else {
+                    cursor.style.display = 'none'; // Hide cursor after completing steps
+                }
+            }
+
+            displayNextStep();
+        }
+    </script>
+</body>
+</html>
